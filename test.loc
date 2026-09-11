@@ -1,0 +1,4 @@
+module test-parallel-rust (test)
+
+import parallel.test (test)
+import parallel-rust

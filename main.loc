@@ -1,0 +1,18 @@
+--' Rust implementations of the `parallel` module.
+--'
+--' Workers are scoped threads pulling from a shared cursor, which lets a
+--' worker borrow the input slice directly rather than clone its share.
+module parallel-rust (*)
+
+import parallel
+import root-rust
+
+record Rust => ParOpts = "ParOpts"
+data Rust => ParChunking = "ParChunking"
+data Rust => ParOrder = "ParOrder"
+
+source Rust from "parallel.rs"
+  ( "morloc_pmap_with" as pmapWith
+  , "morloc_pfilter_with" as pfilterWith
+  , "morloc_pconcat_map_with" as pconcatMapWith
+  )
