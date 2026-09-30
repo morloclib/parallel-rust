@@ -1,4 +1,13 @@
-module test-parallel-rust (test)
+module test-parallel-rust (testNoClosures)
 
-import parallel.test (test)
+import parallel.test (testNoClosures, synthOpen, synthNext, sinkOpen, sinkPut, sinkBatches)
 import parallel-rust
+import text-py
+
+source Rust from "testlib.rs"
+  ( "mlcpartest_synth_open" as synthOpen
+  , "mlcpartest_synth_next" as synthNext
+  , "mlcpartest_sink_open" as sinkOpen
+  , "mlcpartest_sink_put" as sinkPut
+  , "mlcpartest_sink_batches" as sinkBatches
+  )

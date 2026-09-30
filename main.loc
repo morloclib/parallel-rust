@@ -2,6 +2,11 @@
 --'
 --' Workers are scoped threads pulling from a shared cursor, which lets a
 --' worker borrow the input slice directly rather than clone its share.
+--'
+--' A mapped function must be one Rust can share between threads: a named
+--' function or a lambda that captures nothing. A function value chosen at run
+--' time, or a lambda that captures a value, is a closure value, which Rust
+--' cannot share between threads, and is rejected when the program is built.
 module parallel-rust (*)
 
 import parallel
@@ -15,4 +20,8 @@ source Rust from "parallel.rs"
   ( "morloc_pmap_with" as pmapWith
   , "morloc_pfilter_with" as pfilterWith
   , "morloc_pconcat_map_with" as pconcatMapWith
+  , "morloc_psconcat_map_native" as psconcatMapNative
+  , "morloc_psmap_native" as psmapNative
+  , "morloc_psfilter_native" as psfilterNative
+  , "morloc_psfold_native" as psfoldNative
   )

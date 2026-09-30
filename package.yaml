@@ -1,5 +1,5 @@
 name: parallel-rust
-version: 0.1.0
+version: 0.2.0
 homepage: https://github.com/morloclib/parallel-rust
 synopsis: Rust (std::thread) implementations for the parallel module
 description: Scoped-thread implementations of the parallel combinators.
